@@ -1,25 +1,25 @@
 ## file structure
 i created the filestructure before getting into the code
 src
-└── app
-    ├── backend
-    │   └── api
-    │       └── users
-    │           ├── login
-    │           │   └── route.ts
-    │           └── signup
-    │               └── route.ts
+└──app
+    ├──backend
+    │   └──api
+    │       └──users
+    │           ├──login
+    │           │   └──route.ts
+    │           └──signup
+    │               └──route.ts
     │
-    └── frontend
-        ├── login
-        │   └── page.tsx
-        └── signup
-            └── page.tsx
+    └──frontend
+        ├──login
+        │   └──page.tsx
+        └──signup
+            └──page.tsx
 
-├── models
-├── helpers
-├── dbConfig
-└── .env
+├──models
+├──helpers
+├──dbConfig
+└──.env
 
 ## Installation
 edge run framework: it doesnt stay connexted with database ,you have to make seperate calls

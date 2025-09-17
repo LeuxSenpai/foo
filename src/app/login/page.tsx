@@ -28,7 +28,7 @@ export default function LoginPage() {
             <hr/>
             <label htmlFor="email">email</label>
             <input
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            className="p-2 border bg-white text-black border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                 id="email"
                 type="text"
                 value={user.email}
@@ -37,7 +37,7 @@ export default function LoginPage() {
                 />    
             <label htmlFor="password">password</label>
             <input
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            className="p-2 border border-gray-300 bg-white text-black rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                 id="password"
                 type="password"
                 value={user.password}
@@ -46,7 +46,7 @@ export default function LoginPage() {
                 />
                 <button
                 onClick={onLogin}
-                className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">
+                className="p-2 border border-gray-300 bg-white text-black rounded-lg mb-4 focus:outline-none focus:border-gray-600">
                     Login
                 </button>
                 <Link href="/signup">Visit signup page</Link>

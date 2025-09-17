@@ -7,7 +7,7 @@ import bcryptjs from "bcryptjs";
 
 
 
-connect()
+await connect()
 //how do we handle the frontend data call
 export async function POST(request:NextRequest){
     try {

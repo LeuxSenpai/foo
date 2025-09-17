@@ -7,10 +7,11 @@ import bcryptjs from "bcryptjs";
 
 
 
-connect()
+await connect()
 
 //syntax for handling post request
 export async function POST(request:NextRequest){
+    
     try {
         const reqBody = await request.json()
         const {username,email,password} = reqBody

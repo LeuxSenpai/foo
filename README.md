@@ -53,7 +53,9 @@ all this are in page.tsx and added a little code
 
 -db was already existing from fist req but i sent another req which created another db connection which choked the application
 
-
+-the person who already signed in or logged in shouldnt be able to access login/signup page without logout
+-also without sign in we can access profile page 
+-its time to add middle wear to protect the pages
 
 -please add toast
 

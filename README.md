@@ -22,16 +22,27 @@ src
 └──.env
 
 ## Installation
-edge run framework: it doesnt stay connexted with database ,you have to make seperate calls
-unlike other backends where db is always connected ,next js connect to the db when calls are made
-
-I set up cloud for database ( mongoose ) 
-    copy mongoose_url from cloud and add to .env 
 
 libraries:
 axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose
 
-## Frontend
+## NOTE:
+-edge run framework: it doesnt stay connexted with database ,you have to make seperate calls
+unlike other backends where db is always connected ,next js connect to the db when calls are made
+
+-once user,smail,pass is verified we created a jsonwebtoken (encrpt) and send this into users cookies (not inthe local storage to avoid manupilation).Its mainly used for authorization not authentication
+the browser should know whenever you will access for that we store ur id email in payload (json data)
+
+-every db call should use await
+
+-if consolelog is in "use Client" it can be seen on the browser otherwise it can be seen in terminal
+
+# Process
+first set up cloud for database ( mongoose ) 
+    copy mongoose_url from cloud and add to .env 
+
+
+set up the Frontend
 -login
 -signup
 -profile
@@ -41,6 +52,8 @@ all this are in page.tsx and added a little code
 ## Issues Faced
 
 -db was already existing from fist req but i sent another req which created another db connection which choked the application
+
+
 
 -please add toast
 

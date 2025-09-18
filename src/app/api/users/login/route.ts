@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken"
 import {connect} from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import {NextRequest,NextResponse} from "next/server";
@@ -26,9 +27,27 @@ export async function POST(request:NextRequest){
         if (!validPassword){
             return NextResponse.json({error:"Invalid password"},{status:400})
         }
-        //create token data
+        //create token data 
+        const tokenData={
+            id: user._id,
+            username: user.username,
+            email:user.email
+        }
+        //create token
+        const token = await jwt.sign(tokenData,process.env.TOKEN_SECRET!,{expiresIn:"1d"})
+
+        //send to users cookie
+        const response = NextResponse.json({
+            message: "login succesfull",
+            success:true,
+        })
+        response.cookies.set("token",token,{
+            httpOnly:true
+        })
+        return response ;
         
-    } catch (error) {
+    } catch (error:any) {
+
         
     }
     

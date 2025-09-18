@@ -37,35 +37,57 @@ export default function LoginPage() {
             setButtonDisabled(true);
         }
     },[user]);
+return (
+        <div className="relative flex flex-col items-center justify-center min-h-screen py-2">
+            {/* Background Video */}
+            <video
+                autoPlay
+                loop
+                muted
+                className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            >
+                <source src="/videos/bg-3.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+           
+            {/* Login Form */}
+            <div className="relative z-20 flex flex-col items-center justify-center w-3/4">
+                <h1 className="text-white text-2xl mb-4">{loading ? "Processing" : "Login"}</h1>
+                <hr />
 
-    return(
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>{loading?"Processing":"Login"}</h1>
-            <hr/>
-            <label htmlFor="email">email</label>
-            <input
-            className="p-2 border bg-white text-black border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-                id="email"
-                type="text"
-                value={user.email}
-                onChange={(e)=> setUser({...user,email:e.target.value})}
-                placeholder="email"
-                />    
-            <label htmlFor="password">password</label>
-            <input
-            className="p-2 border border-gray-300 bg-white text-black rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-                id="password"
-                type="password"
-                value={user.password}
-                onChange={(e)=> setUser({...user,password:e.target.value})}
-                placeholder="password"
-                />
-                <button
-                onClick={onLogin}
-                className="p-2 border border-gray-300 bg-white text-black rounded-lg mb-4 focus:outline-none focus:border-gray-600">
-                    Login
-                </button>
-                <Link href="/signup">Visit signup page</Link>
+<input
+    className="p-2 mb-2 w-64 text-white placeholder-gray-300 
+       bg-gray-500/30 border border-gray-400/40 
+       rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+    id="email"
+    type="text"
+    value={user.email}
+    onChange={(e) => setUser({ ...user, email: e.target.value })}
+    placeholder="email"
+/>
+
+{/* Input: Password */}
+<input
+    className="p-2 mb-2 w-64 text-white placeholder-gray-300 
+       bg-gray-500/30 border border-gray-400/40 
+       rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+    id="password"
+    type="password"
+    value={user.password}
+    onChange={(e) => setUser({ ...user, password: e.target.value })}
+    placeholder="password"
+/>
+
+{/* Button */}
+<button
+    onClick={onLogin}
+    className="w-64 p-2 bg-blue-600 hover:bg-blue-700 text-white 
+       rounded-md mb-3 text-sm transition"
+>
+    Login
+</button>
+                <Link href="/signup"  className="text-blue-300 hover:underline text-sm">Don't have an account? Sign up here.</Link>
+            </div>
         </div>
-    )
+    );
 }

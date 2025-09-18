@@ -1,19 +1,42 @@
-import mongoose from "mongoose"
-//configration to connect to the database
+import mongoose from "mongoose";
+
+// configuration to connect to the database
+/*
+0 = disconnected
+
+1 = connected
+
+2 = connecting
+
+3 = disconnecting
+*/
 export async function connect() {
+    // If already connected or connecting, just return
+    if (mongoose.connection.readyState === 1) {
+        console.log("MongoDB is already connected.");
+        return;
+    }
+    if (mongoose.connection.readyState === 2) {
+        console.log("MongoDB connection is currently in progress.");
+        return;
+    }
+
     try {
-        mongoose.connect(process.env.MONGO_URI!);
+        await mongoose.connect(process.env.MONGO_URI!);
         const connection = mongoose.connection;
 
-        connection.on('connected',()=>{
-            console.log('mongoDB connected successfully');
-        })
-        connection.on('error',(err)=>{
-            console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-            process.exit()
-        })
+        connection.on("connected", () => {
+            console.log("MongoDB connected successfully");
+        });
+
+        connection.on("error", (err) => {
+            console.error(
+                "MongoDB connection error. Please make sure MongoDB is running. " + err
+            );
+            process.exit(1);
+        });
     } catch (error) {
-        console.log('something has gone wrong');
-        console.log(error);
+        console.error("Something went wrong while connecting to MongoDB");
+        console.error(error);
     }
 }

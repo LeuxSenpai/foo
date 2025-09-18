@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 
-export default function GET(){
+export async function GET(){
     try {
         const response = NextResponse.json({
             message:"logout Success",

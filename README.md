@@ -55,7 +55,7 @@ all this are in page.tsx and added a little code
 
 -the person who already signed in or logged in shouldnt be able to access login/signup page without logout
 -also without sign in we can access profile page 
--its time to add middle wear to protect the pages
+-its time to add middle wear to protect the pages and allows you to run code before request is completed
 
 -please add toast
 

@@ -49,7 +49,11 @@ set up the Frontend
 
 all this are in page.tsx and added a little code
 
+
+
 ## Issues Faced
+
+-problems face when url was write access was granted but used token and auotherization from middle wear and jwt to resolve this issue
 
 -db was already existing from fist req but i sent another req which created another db connection which choked the application
 

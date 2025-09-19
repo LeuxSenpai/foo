@@ -108,7 +108,7 @@ export default function SignupPage() {
             {buttonDisabled ? "No signup" : "Signup"}
           </button>
 
-          <Link href="/login" className="text-blue-300 hover:underline text-sm">
+          <Link href="/login">
             Visit login page
           </Link>
         </div>

@@ -52,7 +52,7 @@ return (
            
             {/* Login Form */}
             <div className="relative z-20 flex flex-col items-center justify-center w-3/4">
-                <h1 className="text-white text-2xl mb-4">{loading ? "Processing" : "Login"}</h1>
+                <h1 className="text-white text-2xl mb-4">{loading ? "Processing..." : "Login"}</h1>
                 <hr />
 
 <input

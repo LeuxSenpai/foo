@@ -56,7 +56,7 @@ src/
 ## Installation
 
 libraries:
-axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose
+axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose framer-motion
 
 Axios:
 Axios is a promise-based HTTP client for the browser, and Node. js allows you to send HTTP requests to communicate with an API. It is lightweight, easy to use, and supports most standard HTTP methods such as GET, POST, PUT, and DELETE.28 Feb 2025

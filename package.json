@@ -12,6 +12,7 @@
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.2",
+    "framer-motion": "^12.23.18",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.19.0",
     "mongoose": "^8.18.1",

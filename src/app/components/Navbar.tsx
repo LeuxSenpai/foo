@@ -12,10 +12,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/ranking', label: 'Ranking' },
-    { href: '/games', label: 'Games' },
-    { href: '/profile', label: 'Profile' },
+    { href: '/', label: '𝗛𝗼𝗺𝗲' },
+    { href: '/ranking', label: '𝗥𝗮𝗻𝗸𝗶𝗻𝗴' },
+    { href: '/games', label: '𝗚𝗮𝗺𝗲𝘀' },
+    { href: '/profile', label: '𝗣𝗿𝗼𝗳𝗶𝗹𝗲' },
   ];
 
   const logout = async () => {
@@ -30,13 +30,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 rounded-full bg-white/10 backdrop-blur-md shadow-lg border border-white/20">
-      <div className="container mx-auto flex justify-between items-center px-6 py-3">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-black/30 backdrop-blur-lg shadow-md border-b border-gray-700/50">
+      <div className="container mx-auto flex justify-between items-center px-6 py-4">
         {/* Brand */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center">
           <Link href="/">
-            <span className="text-lg md:text-xl font-bold text-white">
-              THE FINAL WHISTLE
+            <span className="text-xl font-bold text-white">
+              𝗧𝗵𝗲𝗙𝗶𝗻𝗮𝗹𝗪𝗵𝗶𝘀𝘁𝗹𝗲
             </span>
           </Link>
         </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
               className={`transition-colors ${
                 pathname === item.href
                   ? 'text-green-400 font-semibold'
-                  : 'text-white hover:text-green-400'
+                  : 'text-white hover:text-yellow-400'
               }`}
             >
               {item.label}
@@ -59,9 +59,9 @@ export default function Navbar() {
           {/* 🔘 Logout button */}
           <button
             onClick={logout}
-            className="ml-4 rounded-lg bg-red-500/80 px-4 py-2 font-semibold text-white shadow-md transition-colors hover:bg-red-600"
+            className="ml-4 rounded-md  px-4 py-2 transition-colors hover:cursor-pointer flex items-center justify-center"
           >
-            Logout
+            <img src="/images/logout.png" alt="Logout" className="w-6 h-6" />
           </button>
         </div>
 
@@ -79,7 +79,7 @@ export default function Navbar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
+                d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
               />
             </svg>
           </button>
@@ -88,13 +88,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden rounded-b-2xl bg-white/10 backdrop-blur-md border-t border-white/20">
+        <div className="md:hidden bg-black/30 backdrop-blur-lg border-t border-gray-700/50">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`block px-4 py-3 text-white transition-colors ${
-                pathname === item.href ? 'bg-white/20' : 'hover:bg-white/10'
+              className={`block px-6 py-3 text-white transition-colors ${
+                pathname === item.href ? 'bg-black/50 text-green-400' : 'hover:bg-black/20 hover:text-yellow-400'
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -107,9 +107,9 @@ export default function Navbar() {
               setIsOpen(false);
               logout();
             }}
-            className="block w-full text-left px-4 py-3 text-white hover:bg-red-600 bg-red-500/80"
+            className="block w-full px-6 py-3 hover:cursor-pointer flex items-center justify-start"
           >
-            Logout
+            <img src="/images/logout.png" alt="Logout" className="w-6 h-6" />
           </button>
         </div>
       )}

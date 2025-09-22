@@ -6,7 +6,7 @@ import User from '@/models/userModel';
 
 await connect();
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) { //api created to fetch all users
   try {
     const userId = getDataFromToken(request);
 

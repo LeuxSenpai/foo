@@ -1,30 +1,65 @@
 ## file structure
-i created the filestructure before getting into the code
-src
-└──app
-    ├──backend
-    │   └──api
-    │       └──users
-    │           ├──login
-    │           │   └──route.ts
-    │           └──signup
-    │               └──route.ts
-    │
-    └──frontend
-        ├──login
-        │   └──page.tsx
-        └──signup
-            └──page.tsx
+src/
+│
+├── app/
+│   ├── backend/
+│   │   └── api/
+│   │       └── users/
+│   │           ├── login/
+│   │           │   └── route.ts        # POST /backend/api/users/login
+│   │           ├── signup/
+│   │           │   └── route.ts        # POST /backend/api/users/signup
+│   │           ├── logout/
+│   │           │   └── route.ts        # GET /backend/api/users/logout
+│   │           └── me/
+│   │               └── route.ts        # GET /backend/api/users/me
+│   │
+│   └── frontend/
+│       ├── layout.tsx                  # Global layout for frontend pages
+│       ├── globals.css                 # Global styles
+│       │
+│       ├── login/
+│       │   └── page.tsx                # Login page
+│       │
+│       ├── signup/
+│       │   └── page.tsx                # Signup page
+│       │
+│       ├── profile/
+│       │   └── page.tsx                # Profile page
+│       │
+│       ├── ranking/
+│       │   └── page.tsx                # Rankings page
+│       │
+│       ├── games/
+│       │   └── page.tsx                # Games page
+│       │
+│       └── components/
+│           └── Navbar.tsx              # Navbar component
+│
+├── models/
+│   └── userModel.ts                    # User schema (add position field here)
+│
+├── helpers/
+│   └── getDataFromToken.ts             # Decode JWT helper
+│
+├── dbConfig/
+│   └── dbConfig.ts                     # MongoDB connection
+│
+├── lib/
+│   └── axiosInstance.ts                # Axios interceptor for auto logout
+│
+├── middleware.ts                       # Protects frontend routes
+│
+└── .env                                # Environment variables
 
-├──models
-├──helpers
-├──dbConfig
-└──.env
 
 ## Installation
 
 libraries:
 axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose
+
+Axios:
+Axios is a promise-based HTTP client for the browser, and Node. js allows you to send HTTP requests to communicate with an API. It is lightweight, easy to use, and supports most standard HTTP methods such as GET, POST, PUT, and DELETE.28 Feb 2025
 
 ## NOTE:
 -edge run framework: it doesnt stay connexted with database ,you have to make seperate calls
@@ -52,6 +87,12 @@ all this are in page.tsx and added a little code
 
 
 ## Issues Faced
+
+--after login the navbar isnt dissapearing
+
+-i added a new value to my schema but it isnt getting saved in db cloud
+
+-after some duration the token is getting expired because of that data cant be received, We must create automatic logout after token expired
 
 -problems face when url was write access was granted but used token and auotherization from middle wear and jwt to resolve this issue
 

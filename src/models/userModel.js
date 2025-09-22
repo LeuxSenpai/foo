@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
+    position: {
+        type: String,               // ⚽ store position as text (e.g., "GK", "CM", etc.)
+        required: true,             // ✅ make it mandatory
+  },
     forgotPasswordToken:String,
     forgotPasswordTokenExpiry:Date,
     verifyToken:String,

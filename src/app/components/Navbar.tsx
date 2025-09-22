@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -14,6 +17,17 @@ export default function Navbar() {
     { href: '/games', label: 'Games' },
     { href: '/profile', label: 'Profile' },
   ];
+
+  const logout = async () => {
+    try {
+      await axios.get('/api/users/logout');
+      toast.success('Logout successful');
+      router.push('/login');
+    } catch (error: any) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
 
   return (
     <nav className="fixed top-4 left-1/2 z-50 w-[90%] max-w-5xl -translate-x-1/2 rounded-full bg-white/10 backdrop-blur-md shadow-lg border border-white/20">
@@ -42,6 +56,13 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          {/* 🔘 Logout button */}
+          <button
+            onClick={logout}
+            className="ml-4 rounded-lg bg-red-500/80 px-4 py-2 font-semibold text-white shadow-md transition-colors hover:bg-red-600"
+          >
+            Logout
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -80,6 +101,16 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          {/* 🔘 Logout for mobile */}
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              logout();
+            }}
+            className="block w-full text-left px-4 py-3 text-white hover:bg-red-600 bg-red-500/80"
+          >
+            Logout
+          </button>
         </div>
       )}
     </nav>

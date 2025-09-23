@@ -68,13 +68,25 @@ export default function Profile() {
 
             {/* Position */}
             <motion.h3
-              className="absolute z-20 text-2xl font-extrabold text-amber-200 drop-shadow-lg top-[calc(50%-3rem)] left-[calc(45%-4rem)] -translate-y-25 font-anton uppercase"
+              className="absolute z-20 text-2xl font-extrabold text-black drop-shadow-lg top-[calc(60%-3rem)] left-[calc(42.5%-4rem)] -translate-y-25 uppercase"
               initial={{ x: -40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
               {data.position}
             </motion.h3>
+
+            {/* 🏳️ Nationality Flag */}
+              {data.nationality?.image && (
+                <motion.img
+                  src={data.nationality.image}
+                  alt={data.nationality.name}
+                  className="absolute z-20 top-[calc(38%-1rem)] left-[calc(39.5%-4rem)] w-20 h-12 object-contain rounded-sm "
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                />
+              )}
 
             {/* ⚽ User Stats */}
             <motion.div

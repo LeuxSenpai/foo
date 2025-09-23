@@ -88,6 +88,8 @@ all this are in page.tsx and added a little code
 
 ## Issues Faced
 
+-should i use a CDN or directly store in my cloud?
+
 --after login the navbar isnt dissapearing
 
 -i added a new value to my schema but it isnt getting saved in db cloud

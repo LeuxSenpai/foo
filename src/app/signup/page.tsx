@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Select from "react-select";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -11,12 +12,17 @@ export default function SignupPage() {
     email: "",
     password: "",
     username: "",
-    position: "", // new field
+    position: "",
+    nationality: "", // ✅ added field
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [showForm, setShowForm] = useState(false); 
+  const [showForm, setShowForm] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const [countries, setCountries] = useState<
+    { code: string; flag: string; name: string }[]
+  >([]);
 
   const onSignup = async () => {
     try {
@@ -33,7 +39,9 @@ export default function SignupPage() {
   };
 
   useEffect(() => {
-    setButtonDisabled(!(user.email && user.password && user.username && user.position));
+    setButtonDisabled(
+      !(user.email && user.password && user.username && user.position && user.nationality)
+    );
   }, [user]);
 
   useEffect(() => {
@@ -44,12 +52,24 @@ export default function SignupPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  // ⚽ Football positions list (from your image)
+  // ⚽ Football positions list
   const positions = [
     "GK", "SW", "LB", "LCB", "CB", "RCB", "RB", "LWB", "RWB",
     "LDM", "CDM", "RDM", "LCM", "CM", "RCM", "LM", "RM",
     "LAM", "CAM", "RAM", "LW", "RW", "LS", "CS", "RS"
   ];
+
+  // 🌍 Fetch nationalities
+  useEffect(() => {
+    async function loadNationalities() {
+      const response = await fetch(
+        "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/index.json"
+      );
+      const data = await response.json();
+      setCountries(data);
+    }
+    loadNationalities();
+  }, []);
 
   return (
     <div className="relative flex items-center justify-center min-h-screen px-4">
@@ -107,7 +127,7 @@ export default function SignupPage() {
 
           {/* ⚽ Position Dropdown */}
           <select
-            className="p-2 mb-3 w-3/4 text-white bg-gray-500/30 border border-gray-400/40 
+            className="p-2 mb-3 w-3/4  text-white bg-gray-500/30 border border-gray-400/40 
                        rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
             value={user.position}
             onChange={(e) => setUser({ ...user, position: e.target.value })}
@@ -119,6 +139,23 @@ export default function SignupPage() {
               </option>
             ))}
           </select>
+
+          {/* 🌍 Nationality Dropdown */}
+          <select
+            className="p-2 mb-3 w-3/4 text-white bg-gray-500/30 border border-gray-400/40 
+                      rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+            value={user.nationality}
+            onChange={(e) => setUser({ ...user, nationality: e.target.value })} // only name
+          >
+            <option value="">Select Nationality</option>
+            {countries.map((c) => (
+              <option key={c.code} value={c.name}>
+                {c.flag} {c.name}
+              </option>
+            ))}
+          </select>
+          
+
 
           <button
             onClick={onSignup}

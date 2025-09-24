@@ -38,6 +38,11 @@ const userSchema = new mongoose.Schema({
     forgotPasswordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
+    profilePic: { 
+        type: String,   // stores the Cloudinary public_id
+        default: null,  // optional, null if user hasn't uploaded yet
+    }
+
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

@@ -46,7 +46,7 @@ src/
 │   └── dbConfig.ts                     # MongoDB connection
 │
 ├── lib/
-│   └── axiosInstance.ts                # Axios interceptor for auto logout
+│   └── 
 │
 ├── middleware.ts                       # Protects frontend routes
 │
@@ -56,7 +56,18 @@ src/
 ## Installation
 
 libraries:
-axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose framer-motion
+axios bcryptjs jsonwebtoken nodemailer react-hot-toast mongoose framer-motion 
+
+firebase: failed to use
+create account
+create project
+host app
+install libraaries firebase -g firebase-tool
+add configration to lib
+use terinal:
+    firebase login
+    firebase init
+    firebase deploy
 
 Axios:
 Axios is a promise-based HTTP client for the browser, and Node. js allows you to send HTTP requests to communicate with an API. It is lightweight, easy to use, and supports most standard HTTP methods such as GET, POST, PUT, and DELETE.28 Feb 2025
@@ -87,6 +98,9 @@ all this are in page.tsx and added a little code
 
 
 ## Issues Faced
+
+-i have to signup in cloud service to store profile user pics
+cant i do it in mongodb why do i have to do it in a seperate cloud env:like amzon,azure,google,firebase
 
 -should i use a CDN or directly store in my cloud?
 
